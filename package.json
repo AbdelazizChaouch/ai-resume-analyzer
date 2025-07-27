@@ -6,7 +6,10 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "preview": "npm run build && npm run start",
+    "lint": "echo 'Linting would go here'",
+    "clean": "rm -rf build"
   },
   "dependencies": {
     "@react-router/node": "^7.5.3",
@@ -32,5 +35,8 @@
     "typescript": "^5.8.3",
     "vite": "^6.3.3",
     "vite-tsconfig-paths": "^5.1.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
