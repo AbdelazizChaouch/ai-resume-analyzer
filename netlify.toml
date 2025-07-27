@@ -2,13 +2,8 @@
   command = "npm run build"
   publish = "build/client"
 
-[functions]
-  directory = "netlify/functions"
-  node_bundler = "esbuild"
-  external_node_modules = ["@react-router/node", "@react-router/serve"]
-
 [[headers]]
-  for = "/build/client/*"
+  for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
@@ -19,15 +14,9 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
-# Serve static assets directly
-[[redirects]]
-  from = "/build/client/*"
-  to = "/build/client/:splat"
-  status = 200
-
-# Handle all other routes through the React Router function
+# SPA fallback - serve index.html for all routes
+# This handles client-side routing properly
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/index"
-  status = 200
-  force = true 
+  to = "/index.html"
+  status = 200 
