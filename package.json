@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "react-router build",
-    "build:spa": "react-router build --ssr=false",
+    "build:spa": "react-router build --config=react-router.spa.config.ts",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
@@ -32,6 +32,7 @@
     "@types/node": "^20",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "serve": "^14.2.4",
     "tailwindcss": "^4.1.4",
     "tw-animate-css": "^1.3.5",
     "typescript": "^5.8.3",
