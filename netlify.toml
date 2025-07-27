@@ -5,6 +5,7 @@
 
 [functions]
   node_bundler = "esbuild"
+  external_node_modules = ["@react-router/node", "@react-router/serve"]
 
 [[headers]]
   for = "/build/client/*"
@@ -18,7 +19,14 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
+# Handle all routes through the server function
+[[redirects]]
+  from = "/build/client/*"
+  to = "/build/client/:splat"
+  status = 200
+
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/server"
-  status = 200 
+  to = "/.netlify/functions/index"
+  status = 200
+  force = true 
